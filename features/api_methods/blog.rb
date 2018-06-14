@@ -25,18 +25,14 @@ def change_blog_post_title(user:, post:)
   }.to_json
   header = { 'Content-type' => 'application/json',
              authorization: user.auth_token }
-  response = API.post('http://195.13.194.180:8090/api/post',
+  response = API.put("http://195.13.194.180:8090/api/post?post_id=#{post.id}",
                       headers: header,
                       payload: payload)
 
   # Check if response 200 OK
   assert_status_code(200, response, 'Post updated')
   resp = JSON.parse(response)
-  post.id = resp['id']
   post.title = resp['title']
-  post.content = resp['content']
-  post.created_at = resp['createdAt']
-  post.updated_at = resp['updated_at']
 end
 
 def check_if_post_exists(user:, post:)
