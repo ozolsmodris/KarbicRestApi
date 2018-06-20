@@ -3,6 +3,7 @@ require 'rest-client'
 module API
   def self.post(url, headers: {}, cookies: {}, payload: {})
     # RestClient.log = 'stdout'
+    headers['Content-Type'] = 'application/json' unless headers['Content-Type']
     headers['User-Agent'] = 'REST-API-Automation'
     RestClient::Request.execute(
       method: :post,
@@ -17,6 +18,7 @@ module API
 
   def self.get(url, headers: {}, cookies: {})
     # RestClient.log = 'stdout'
+    headers['Content-Type'] = 'application/json' unless headers['Content-Type']
     headers['User-Agent'] = 'REST-API-Automation'
     RestClient::Request.execute(
       method: :get,
@@ -30,6 +32,7 @@ module API
 
   def self.put(url, headers: {}, cookies: {}, payload: {})
     # RestClient.log = 'stdout'
+    headers['Content-Type'] = 'application/json' unless headers['Content-Type']
     headers['User-Agent'] = 'REST-API-Automation'
     RestClient::Request.execute(
       method: :put,
@@ -44,6 +47,7 @@ module API
 
   def self.delete(url, headers: {}, cookies: {})
     # RestClient.log = 'stdout'
+    headers['Content-Type'] = 'application/json' unless headers['Content-Type']
     headers['User-Agent'] = 'REST-API-Automation'
     RestClient::Request.execute(
       method: :delete,

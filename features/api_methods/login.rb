@@ -5,7 +5,6 @@ def login_positive(user:)
   }.to_json
 
   response = API.post('http://195.13.194.180:8090/api/login',
-                      headers: { 'Content-type' => 'application/json' },
                       payload: payload)
 
   # Check if response 200 OK
@@ -26,7 +25,6 @@ def login_negative(user:)
   }.to_json
 
   response = API.post('http://195.13.194.180:8090/api/login',
-                      headers: { 'Content-type' => 'application/json' },
                       payload: payload)
 
   # Check if response 401 forbidden

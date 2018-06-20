@@ -3,8 +3,7 @@ def create_post_positive(user:, post:)
     title: Time.new.to_i.to_s,
     content: Time.new.to_i.to_s
   }.to_json
-  header = { 'Content-type' => 'application/json',
-             authorization: user.auth_token }
+  header = { authorization: user.auth_token }
   response = API.post('http://195.13.194.180:8090/api/post',
                       headers: header,
                       payload: payload)
@@ -23,8 +22,7 @@ def change_blog_post_title(user:, post:)
   payload = {
     title: "#{post.title} + Changed + #{Time.new.to_i}}"
   }.to_json
-  header = { 'Content-type' => 'application/json',
-             authorization: user.auth_token }
+  header = { authorization: user.auth_token }
   response = API.put("http://195.13.194.180:8090/api/post?post_id=#{post.id}",
                       headers: header,
                       payload: payload)
@@ -36,8 +34,7 @@ def change_blog_post_title(user:, post:)
 end
 
 def check_if_post_exists(user:, post:)
-  header = { 'Content-type' => 'application/json',
-             authorization: user.auth_token }
+  header = { authorization: user.auth_token }
   response = API.get("http://195.13.194.180:8090/api/post?id=#{post.id}",
                      headers: header,
                      cookies: {})
